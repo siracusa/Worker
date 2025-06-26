@@ -8,10 +8,12 @@
 import SwiftUI
 
 @main
-struct WorkerApp: App {
+struct WorkerApp : App {
+    let appState = AppState()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(appState: appState)
         }
     }
 }
