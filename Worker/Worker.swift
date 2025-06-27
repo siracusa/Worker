@@ -27,11 +27,12 @@ actor Worker {
         return products
     }
 
-    func processProducts(_ products: sending [WorkProduct]) -> [WorkProduct] {
+    func processProducts(_ products: sending [WorkProduct]) -> sending [WorkProduct] {
         for product in products {
             processProduct(product)
         }
 
+        nonisolated(unsafe) let products = products
         return products
     }
 
