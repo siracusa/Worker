@@ -32,7 +32,9 @@ actor Worker {
             processProduct(product)
         }
 
+        // Important…for reasons I don't (yet) full understand
         nonisolated(unsafe) let products = products
+
         return products
     }
 

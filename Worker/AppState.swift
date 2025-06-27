@@ -32,14 +32,12 @@ final class AppState {
 
         // Approach 2:
         //
-        // Trying to "un-own" the products array also doesn't work:
+        // "Disconnect" the products array:
         nonisolated(unsafe) let localProducts = self.products
 
-        // Now only localProducts references what was once self.products, right?
+        // Now only localProducts references what was once self.products
         self.products = []
 
-        // ERROR: Non-sendable result type '[WorkProduct]' cannot be sent from
-        // actor-isolated context in call to instance method 'processProducts'
         self.products = await worker.processProducts(localProducts)
 
         return self.products.count
