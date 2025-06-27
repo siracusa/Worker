@@ -33,7 +33,7 @@ final class AppState {
         // Approach 2:
         //
         // Trying to "un-own" the products array also doesn't work:
-        let localProducts = self.products
+        nonisolated(unsafe) let localProducts = self.products
 
         // Now only localProducts references what was once self.products, right?
         self.products = []
